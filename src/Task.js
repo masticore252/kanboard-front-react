@@ -4,7 +4,7 @@ import { Grid, Card, CardContent } from '@material-ui/core'
 
 const Task = ({data, index}) => {
   return (
-    <Draggable draggableId={data.id+''} index={index}>
+    <Draggable draggableId={data.id} index={index}>
       {(provided) => (
         <Grid
           item
