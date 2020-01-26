@@ -10,9 +10,10 @@ import { Draggable } from 'react-beautiful-dnd'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyle = makeStyles({
-  display: "flex",
-  
-  justifyContent: "space-between "
+  cardContent: {
+    display: "flex",
+    justifyContent: "space-between"
+  }
 })
 
 const Task = ({data, index}) => {
