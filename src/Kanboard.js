@@ -1,13 +1,24 @@
 import React from 'react'
 
 import Grid from "@material-ui/core/Grid";
+import Container from '@material-ui/core/Container'
+import { makeStyles } from '@material-ui/core/styles';
 
 import Column from './Column'
 import arrayMove from "array-move";
 import { DragDropContext } from 'react-beautiful-dnd';
 
+const useStyle = makeStyles((theme) => ({
+  container: {
+    height: "85vh",
+    display: "flex",
+    alignItems: "stretch"
+  },
+}))
 
 const Kanboard = ({ columns, setColumns }) => {
+
+  const classes = useStyle()
 
   const children = columns.map(column => <Grid item xs key={column.id}><Column data={column} /></Grid>);
 
@@ -66,14 +77,13 @@ const Kanboard = ({ columns, setColumns }) => {
   }
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Grid
-        container
-        spacing={3}
-      >
-          {children}
-      </Grid>
-    </DragDropContext>
+    <Container className={classes.container}>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Grid container spacing={3} >
+            {children}
+        </Grid>
+      </DragDropContext>
+    </Container>
   );
 };
 
