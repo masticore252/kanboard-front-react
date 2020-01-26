@@ -12,7 +12,7 @@ const Task = ({data, index}) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <Card>
+          <Card variant="outlined">
             <CardContent>
               {data.name}
             </CardContent>

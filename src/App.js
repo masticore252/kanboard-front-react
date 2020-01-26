@@ -13,6 +13,12 @@ const useStyle = makeStyles((theme) => ({
   appBar: {
     marginBottom: theme.spacing(2),
   },
+  container: {
+    height: "85vh",
+    display: "flex",
+    alignItems: "stretch"
+
+  },
 }))
 
 const getBoardData = async (id) => {
@@ -24,7 +30,7 @@ const getBoardData = async (id) => {
 
   } catch (error) {
 
-    return { columns: [] }
+    return Promise.resolve(false)
 
   }
 }
@@ -35,7 +41,7 @@ const App = () => {
   const [columns, setColumns] = useState([])
 
   useEffect(() =>{
-    getBoardData(1).then(board => setColumns(board.columns))
+    getBoardData(1).then(board => board ? setColumns(board.columns) : null)
   },[])
 
   return <>
@@ -43,7 +49,7 @@ const App = () => {
       <ToolBar>Kanban Board</ToolBar>
     </AppBar>
 
-    <Container>
+    <Container className={classes.container}>
       <Kanboard columns={columns} setColumns={setColumns} />
     </Container>
   </>;

@@ -8,11 +8,25 @@ import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import AddCircle from "@material-ui/icons/AddCircle";
 
+import { makeStyles } from "@material-ui/core/styles";
 import { Droppable } from 'react-beautiful-dnd'
 
 import Task from './Task'
 
+const useStyles = makeStyles({
+  card: {
+    height: "100%"
+  },
+  cardActions:{
+    display: "flex",
+    justifyContent: "space-between"
+
+  }
+})
+
 const Column = ({ data }) =>  {
+
+  const classes = useStyles()
 
   const {id, name, description, tasks} = data
 
@@ -22,13 +36,13 @@ const Column = ({ data }) =>  {
     <Droppable droppableId={id}>
       {(provided) => {
         return (<>
-          <Card>
-            <CardActions>
+          <Card className={classes.card} raised>
+            <CardActions className={classes.cardActions}>
               <CardHeader title={name}/>
               <IconButton aria-label="New Task"><AddCircle/></IconButton>
             </CardActions>
             <CardContent innerRef={provided.innerRef} {...provided.droppableProps} >
-              <Grid item xs container direction="column"spacing={2} alignItems="stretch">
+              <Grid item xs container direction="column" spacing={2} alignItems="stretch">
                 {tasksComponents}
               </Grid>
             </CardContent>

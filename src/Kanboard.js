@@ -45,7 +45,7 @@ const Kanboard = ({ columns, setColumns }) => {
 
         let draggedTask = null
         newColumns[sourceColumnIndex].tasks = newColumns[sourceColumnIndex].tasks.filter(t => {
-          if (t.id != draggableId){
+          if (t.id !== draggableId){
             return true
           } else {
             draggedTask = t
@@ -66,17 +66,14 @@ const Kanboard = ({ columns, setColumns }) => {
   }
 
   return (
-    <Grid
-      container
-      spacing={3}
-      direction="row"
-      justify="center"
-      alignItems="stretch"
-    >
-      <DragDropContext onDragEnd={onDragEnd}>
-        {children}
-      </DragDropContext>
-    </Grid>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <Grid
+        container
+        spacing={3}
+      >
+          {children}
+      </Grid>
+    </DragDropContext>
   );
 };
 
