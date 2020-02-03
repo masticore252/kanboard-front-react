@@ -1,27 +1,20 @@
 const initialState = {
-
-  columns: [
-    {
-      id: '',
-      name: '',
-      description: '',
-      tasks: [
-        {
-          id: '',
-          name: '',
-          column_id: '',
-          description: '',
-        },
-      ]
-    },
-  ],
-  
+  columns: [],
+  currentBoardId: null,
+  availableBoardsIds: [],
 }
 
 const kanboardReducer = (prevState = initialState, action) => {
   switch (action.type) {
 
-    case 'GET_KANBAN_BOARD':
+    case 'SET_COLUMNS':
+      return {
+        ...prevState,
+        currentBoardId: action.payload.id,
+        columns: action.payload.columns
+      }
+
+    case 'MOVE_TASK':
       return prevState
 
     default:
