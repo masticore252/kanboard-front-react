@@ -3,6 +3,7 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/ToolBar';
 
+import BoardSelector from './BoardSelector'
 import Kanboard from './Kanboard';
 import Login from './Login'
 
@@ -20,7 +21,10 @@ const App = () => {
 
   return <>
     <AppBar position='static' className={classes.appBar}>
-      <ToolBar><h1>Kanban Board</h1></ToolBar>
+      <ToolBar>
+        <h1>Kanban Board</h1>
+        <BoardSelector/>
+      </ToolBar>
     </AppBar>
 
     <Router>

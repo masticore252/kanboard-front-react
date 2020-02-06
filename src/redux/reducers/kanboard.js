@@ -14,6 +14,12 @@ const kanboardReducer = (prevState = initialState, action) => {
         columns: action.payload.columns
       }
 
+    case 'CHANGE_BOARD':
+      return {
+        ...prevState,
+        currentBoardId: action.payload.id,
+      }
+
     case 'MOVE_TASK':
       return prevState
 
