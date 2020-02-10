@@ -14,6 +14,10 @@ const useStyle = makeStyles((theme) => ({
   appBar: {
     marginBottom: theme.spacing(2),
   },
+  toolBar: {
+    display:'flex',
+    justifyContent: 'space-between'
+  }
 }))
 
 const App = () => {
@@ -21,7 +25,7 @@ const App = () => {
 
   return <>
     <AppBar position='static' className={classes.appBar}>
-      <ToolBar>
+      <ToolBar className={classes.toolBar}>
         <h1>Kanban Board</h1>
         <BoardSelector/>
       </ToolBar>
